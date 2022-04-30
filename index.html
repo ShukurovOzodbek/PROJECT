@@ -224,7 +224,7 @@
     <div class="order">
         <div class="container">
             <div class="title">Заказывай пробный день прямо сейчас!</div>
-            <form action="#" class="order__form">
+            <form name="call" class="order__form">
                 <input required placeholder="Ваше имя" name="name" type="text" class="order__input">
                 <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="order__input">
                 <img src="icons/right.svg" alt="right">
@@ -290,16 +290,19 @@
     </footer>
 
     <div class="modal" data-close ></div>
-        <div class="modal__dialog hide">
+        <div class="modal__dialog show">
             <div class="modal__content">
-                <form action="#">
+                <form name="caller" class="calling show">
                     <div data-close class="modal__close">&times;</div>
                     <div class="modal__title">Мы свяжемся с вами как можно быстрее!</div>
                     <input required placeholder="Ваше имя" name="name" type="text" class="modal__input">
                     <input required placeholder="Ваш номер телефона" name="phone" type="phone" class="modal__input">
-                    <button class="btn btn_dark btn_min">Перезвонить мне</button>
+                    <button class="btn btn_dark btn_min btn_simp">Перезвонить мне</button>
                 </form>
             </div>
+        </div>
+        <div class="thank__modal show">
+                <div class="modal__title2"></div>
         </div>
     <script src="js/script.js"></script>
 </body>

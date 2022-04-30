@@ -1,3 +1,33 @@
+// modal_window
+const blur = document.querySelector('.modal') 
+const modal = document.querySelector('.modal__content')
+const btn_cal = document.querySelector('.header__right-block .btn')
+const btn_cal2 = document.querySelector('.offer__action .btn')
+const modal__close = document.querySelector('.modal__close')
+const modal__dialog = document.querySelector('.modal__dialog')
+let abb = document.querySelector('.thank__modal')
+
+modal__close.onclick = () => {
+    modal.style.transform = 'translateY(-883px)'
+    abb.style.top = '-50%'
+    blur.style.display = 'none'
+}
+blur.onclick = () => {
+    modal.style.transform = 'translateY(-883px)'
+    blur.style.display = 'none'
+    abb.style.top = '-50%'
+}
+btn_cal.onclick = () => {
+    modal.style.transform = 'translateY(-183px)'
+    blur.style.display = 'block'
+    modal__dialog.classList.value = 'modal__dialog show'
+}
+btn_cal2.onclick = () => {
+    modal.style.transform = 'translateY(-183px)'
+    blur.style.display = 'block'
+}
+
+// slider
 let offer__slide = document.querySelectorAll('.offer__slide')
 let prev = document.querySelector('.offer__slider-prev')
 let next = document.querySelector('.offer__slider-next')
@@ -118,3 +148,84 @@ const changeContent = (par) => {
             break;
     }
 }
+
+// Regex
+let form = document.forms.call
+let caller = document.forms.caller
+let inputs2 = caller.querySelectorAll('.modal__input')
+let inputs = form.querySelectorAll('.order__input')
+let btn_call = form.querySelector('.btn')
+
+let pattern = {
+    name: /^[a-zA-ZàáâäãåąčćęèéêëėįìíîïłńòóôöõøùúûüųūÿýżźñçčšžÀÁÂÄÃÅĄĆČĖĘÈÉÊËÌÍÎÏĮŁŃÒÓÔÖÕØÙÚÛÜŲŪŸÝŻŹÑßÇŒÆČŠŽ∂ð.'-]+$/u,
+    phone: /^[\+]?[(]?[0-9]{3}[)]?[-\s\.]?[0-9]{3}[-\s\.]?[0-9]{4,6}$/im 
+}
+
+function validate(field,regex) {
+    if(regex.test(field.value)) {
+        field.style.border = "1px solid green"
+    }else {
+        field.style.border = "1px solid red"
+    }
+}
+form.onsubmit = (event) => {
+    submit(event, form)
+    inputs.forEach(input => {
+        input.value = ''
+    });
+}
+caller.onsubmit = (event) => {
+    submit(event, caller)
+    inputs2.forEach(input => {
+        input.value = ''
+    });
+}
+
+
+function submit(e, forms) {
+    e.preventDefault()
+
+    let elem = {}
+    
+    let fm = new FormData(forms)
+
+    fm.forEach((value, key) => {
+        elem[key] = value
+    });
+
+    console.log(elem);
+
+    setTimeout(() => {
+        modal.style.transform = 'translateY(-883px)'
+        modal__dialog.style.display = 'none'
+        setTimeout(() => {
+            abb.style.top = '30%'
+            document.querySelector('.modal__title2').innerHTML = `Спасибо за оставленную заявку <b>${elem.name}</b>`
+            setTimeout(() => {
+                abb.style.top = '-30%'
+                blur.style.display = 'none'
+            }, 3000);
+        }, 200);
+    }, 500);
+}
+
+window.onscroll = () => {
+    if(window.scrollY + 1 > document.documentElement.scrollHeight - document.documentElement.clientHeight){
+        modal.style.transform = 'translateY(-183px)'
+        blur.style.display = 'block'
+        modal__dialog.classList.value = 'modal__dialog show'
+    }
+};
+
+inputs.forEach(input => {
+    input.onkeyup = () => {
+        validate(input, pattern[input.name])
+    }
+});
+
+inputs2.forEach(input => {
+    input.onkeyup = () => {
+        validate(input, pattern[input.name])
+    }
+});
+

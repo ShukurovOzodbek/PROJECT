@@ -656,11 +656,12 @@ a {
     display: none;
     width: 100%;
     height: 100%;
-    overflow: hidden;
+    overflow: hidden;   
     background-color: rgba(0, 0, 0, .5)
 }
 
 .modal__dialog {
+    transition: .5s ease;
     max-width: 500px;
     margin: 100px auto;
     position: fixed;
@@ -678,7 +679,9 @@ a {
     border: 1px solid rgba(0, 0, 0, .2);
     border-radius: 4px;
     max-height: 80vh;
-    overflow-y: auto
+    overflow-y: auto;
+    transition: .5s ease;
+    transform: translateY(-883px);
 }
 
 .modal__close {
@@ -697,9 +700,14 @@ a {
 .modal__title {
     text-align: center;
     font-size: 22px;
-    text-transform: uppercase
+    text-transform: uppercase;
 }
 
+.modal__title2{
+    text-align: center;
+    font-size: 22px;
+    text-transform: uppercase;   
+}
 .modal__input {
     display: block;
     margin: 20px auto 20px auto;
@@ -715,19 +723,32 @@ a {
 }
 
 .modal .btn {
-    display: block;
+    /* display: block; */
     width: 280px;
-    margin: 0 auto
+    margin: 0 auto;
+    margin-left: 70px;
 }
 
 .show {
     display: block;
 }
-
+.btn_simp{
+    margin-left: 103px;
+}
 .hide {
     display: none;
 }
-
+.thank__modal{
+    transition: .5s ease;
+    padding: 40px;
+    position: fixed;
+    z-index: 100000;
+    top: -50%;
+    right: 40%;
+    left: 40%;
+    width: 370px;
+    background-color: #fff;
+}
 .fade {
     animation-name: fade;
     animation-duration: 1.5s;
