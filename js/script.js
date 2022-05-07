@@ -11,20 +11,23 @@ modal__close.onclick = () => {
     modal.style.transform = 'translateY(-883px)'
     abb.style.top = '-50%'
     blur.style.display = 'none'
+    modal__dialog.classList = 'modal__dialog hide'
 }
 blur.onclick = () => {
     modal.style.transform = 'translateY(-883px)'
     blur.style.display = 'none'
     abb.style.top = '-50%'
+    modal__dialog.classList = 'modal__dialog hide'
 }
 btn_cal.onclick = () => {
     modal.style.transform = 'translateY(-183px)'
     blur.style.display = 'block'
-    modal__dialog.classList.value = 'modal__dialog show'
+    modal__dialog.classList = 'modal__dialog show'
 }
 btn_cal2.onclick = () => {
     modal.style.transform = 'translateY(-183px)'
     blur.style.display = 'block'
+    modal__dialog.classList = 'modal__dialog show'
 }
 
 // slider
@@ -228,4 +231,80 @@ inputs2.forEach(input => {
         validate(input, pattern[input.name])
     }
 });
+
+
+
+
+let gender = document.querySelectorAll('.calculating__choose_mini .calculating__choose-item')
+let calculating__choose = document.querySelectorAll('.calculating__choose_medium .calculating__choose-item')
+let calculating__choose_big = document.querySelectorAll('.calculating__choose_big .calculating__choose-item')
+let btn_ras = document.querySelector('.btn_ras')
+
+
+
+let obj = {}
+
+gender.forEach(element => {
+    element.onclick = ( ) => {
+        gender.forEach(elem => {
+            elem.classList.remove('calculating__choose-item_active')
+        }); 
+        element.classList.add('calculating__choose-item_active')
+        obj.gender = element.innerHTML
+    }
+});
+
+
+
+calculating__choose_big.forEach(element => {
+    element.onclick = ( ) => {
+        calculating__choose_big.forEach(elem => {
+            elem.classList.remove('calculating__choose-item_active')
+        }); 
+        element.classList.add('calculating__choose-item_active')
+        obj.activity = element.innerHTML
+    }
+});
+
+let kkal = document.querySelector('.kkal')
+
+btn_ras.onclick = () => {
+    obj.height = calculating__choose[0].value
+    obj.weight = calculating__choose[1].value
+    obj.age = calculating__choose[2].value
+    console.log(obj);
+    kcal(obj, kkal)
+}
+
+function kcal(object , k) {
+    if(object.gender === 'Мужчина' ) {
+        k.innerHTML =  (88,36 + (13,4 * parseInt(object.weight)) + (4,8 * parseInt(object.height)) - (5,7  * parseInt(object.age)))
+    }else{
+        k.innerHTML =  (447,6 + (9,2 * parseInt(object.weight)) + (3,1 * parseInt(object.height)) - (4.3  * parseInt(object.age)))
+    }
+    let a = parseFloat(+(k.innerHTML) - 150)
+    let b = parseFloat(+(k.innerHTML) - 100)
+    let c = parseFloat(+(k.innerHTML) - 0)
+    let d = parseFloat(+(k.innerHTML) + 200)
+    switch (object.activity) {
+        case 'Низкая активность':
+            k.innerHTML = a
+            break;
+        case 'Невысокая активность':
+            k.innerHTML = b
+            break;
+        case 'Умеренная активность':
+            k.innerHTML = c
+            break;
+        case 'Высокая активность':
+            k.innerHTML = d
+            break;
+        default:
+            break;
+    }
+}
+
+
+// BMR = 88,36 + (13,4 x вес в кг) + (4,8 х рост в см) — (5,7 х возраст в годах) men
+// BMR = 447,6 + (9,2 x вес в кг) + (3,1 х рост в cм) — (4.3 х возраст в годах) women
 
