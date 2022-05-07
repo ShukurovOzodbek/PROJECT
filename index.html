@@ -15,8 +15,8 @@
                 <img src="icons/logo.svg" alt="Логотип">
             </div>
             <nav class="header__links">
-                <a href="#" class="header__link">Доставка питания</a>
-                <a href="#" class="header__link">Второй пункт</a>
+                <a href="#call" class="header__link">Доставка питания</a>
+                <a href="#calc" class="header__link">Второй пункт</a>
             </nav>
         </div>
         <div class="header__right-block">
@@ -134,7 +134,7 @@
 
     <div class="divider"></div>
 
-    <div class="calculating">
+    <div class="calculating" id="calc">
         <div class="container">
             <h2 class="title">Рассчитаем вашу потребность в калориях?
             </h2>
@@ -142,18 +142,18 @@
                 <div class="calculating__subtitle">
                     Ваш пол
                 </div>
-                <div class="calculating__choose" id="gender">
-                    <div class="calculating__choose-item calculating__choose-item_active">Женщина</div>
-                    <div class="calculating__choose-item">Мужчина</div>
+                <div class="calculating__choose calculating__choose_mini" id="gender">
+                    <div id="men" class="calculating__choose-item calculating__choose-item_active">Женщина</div>
+                    <div id="women" class="calculating__choose-item">Мужчина</div>
                 </div>
 
                 <div class="calculating__subtitle">
                     Ваша конституция
                 </div>
                 <div class="calculating__choose calculating__choose_medium">
-                    <input type="text" id="height" placeholder="Введите рост" class="calculating__choose-item">
-                    <input type="text" id="weight" placeholder="Введите вес"  class="calculating__choose-item">
-                    <input type="text" id="age" placeholder="Введите возраст" class="calculating__choose-item">
+                    <input type="number" id="height" placeholder="Введите рост" class="calculating__choose-item">
+                    <input type="number" id="weight" placeholder="Введите вес"  class="calculating__choose-item">
+                    <input type="number" id="age" placeholder="Введите возраст" class="calculating__choose-item">
                 </div>
 
                 <div class="calculating__subtitle">
@@ -165,7 +165,7 @@
                     <div id="medium" class="calculating__choose-item">Умеренная активность</div>
                     <div id="high" class="calculating__choose-item">Высокая активность</div>
                 </div>
-
+                <button class="btn btn_light btn_ras">Рассчитать</button>
                 <div class="calculating__divider"></div>
 
                 <div class="calculating__total">
@@ -173,7 +173,7 @@
                         Ваша суточная норма калорий:
                     </div>
                     <div class="calculating__result">
-                        <span>2700</span> ккал
+                        <span class="kkal">2700</span> ккал
                     </div>
                 </div>
             </div>
@@ -222,7 +222,7 @@
     </div>
 
     <div class="order">
-        <div class="container">
+        <div class="container" id="call">
             <div class="title">Заказывай пробный день прямо сейчас!</div>
             <form name="call" class="order__form">
                 <input required placeholder="Ваше имя" name="name" type="text" class="order__input">
@@ -290,7 +290,7 @@
     </footer>
 
     <div class="modal" data-close ></div>
-        <div class="modal__dialog show">
+        <div class="modal__dialog hide">
             <div class="modal__content">
                 <form name="caller" class="calling show">
                     <div data-close class="modal__close">&times;</div>
