@@ -4,7 +4,8 @@
     box-sizing: border-box;
     margin: 0;
     padding: 0;
-    font-family: Roboto, sans-serif
+    font-family: Roboto, sans-serif;
+    scroll-behavior: smooth;
 }
 
 a {
@@ -683,7 +684,10 @@ a {
     transition: .5s ease;
     transform: translateY(-883px);
 }
-
+.btn_ras{
+    transform: translate(470px, 20px);
+    margin-bottom: 30px;
+}
 .modal__close {
     position: absolute;
     top: 8px;
